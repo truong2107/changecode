@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.ThongTin {
+  background-color: white;
+  max-width: 80%;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  justify-content: center;
+}
+.content {
+  height: 100%;
+  width: 90%;
+}
+.KhachHang {
+  margin-top: 50px;
+  display: block;
+}
+.oders p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+thead {
+  background-color: #f37319;
+  color: white;
+}
+.food-table tr td,
+.food-table tr th {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+}
+.goback {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.goback button {
+  color: white;
+  background-color: gray;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.goback button:hover {
+  background-color: #f37319;
+}
+td img {
+  height: 100px;
+  width: 100px;
+}
+@media (max-width: 520px) {
+  .ThongTin {
+    background-color: white;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+  }
+  td img {
+    height: 50px;
+    width: 50px;
+  }
+  td {
+    font-size: small;
+  }
+}
+@media (max-width: 372px) {
+  .food-table {
+    font-size: x-small;
+  }
+}

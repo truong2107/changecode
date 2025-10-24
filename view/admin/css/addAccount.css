@@ -1,0 +1,132 @@
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #f37319;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: #f37319;
+  color: white;
+  min-width: 45px;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  transition: 0.3s;
+}
+
+.input-field:focus {
+  border-color: #f37319;
+  outline: none;
+}
+
+select.input-field {
+  cursor: pointer;
+  background-color: white;
+}
+
+input[type="submit"] {
+  background-color: #f37319;
+  color: white;
+  padding: 15px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #d65a00;
+}
+
+.social {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.social i {
+  color: #f37319;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid #dfe9f5;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.social i:hover {
+  font-size: 1.6rem;
+  border-color: #f37319;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.links a {
+  color: #f37319;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+.back {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 15px;
+  margin: 0 5px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.back:hover {
+  background: #d0d0d0;
+}
