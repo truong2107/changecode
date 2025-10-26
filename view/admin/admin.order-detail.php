@@ -24,8 +24,8 @@ include "../../inc/admin/order-detail.php";
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./css/admin.order-detail.css"/>
-    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="css/admin.order-detail.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
     <title>DMTD FOOD</title>
   </head>
 

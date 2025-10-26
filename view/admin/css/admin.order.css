@@ -1,0 +1,272 @@
+main {
+    height: 100%;   
+    margin: 0 20px;
+}
+a{
+    text-decoration: none;
+}
+.content{
+    padding: 0;
+}
+.main-content {
+    padding-top: 20px;
+}
+
+.Filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-group select{
+    height: 40px;
+    background-color: #E5E5E5;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 15px;
+}
+option {
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+}
+
+.Date{
+    display: flex;
+}
+.start{
+    margin-right: 20px;
+}
+.start label, .end label{
+    margin-right: 10px;
+    font-size: 15px;
+}
+#time-start, #time-end{
+    background-color: #E5E5E5;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.list-order{
+    width: 100%;
+    background-color: rgb(255, 255, 255);;
+    border-radius: 7px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1px;
+    overflow-x: hidden;
+}
+table tr td:nth-child(4){
+    max-width: 190px;
+}
+th, td {
+    border-top: 1px solid #000; 
+    padding: 10px; 
+    text-align: center; 
+    border-right: none;
+    word-wrap: break-word;
+    font-size: 18px;
+}
+
+tbody tr:hover {
+   background: #ECECEC;
+}
+thead td{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px;
+    background: #F0F0F0;
+}
+tbody td{
+    padding: 10px 15px;
+}
+
+.status-btn{
+
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pending{
+    background-color: #FFD251;
+    color: black;
+}
+.cancel{
+    background-color: rgb(240, 78, 46);
+}
+.success{
+    background-color: rgb(39, 174, 96);
+}
+.confirm{
+    background-color: #007bff;
+}
+
+.control button{
+    background-color: rgb(229, 229, 229);
+    margin-right: 5px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+@media screen and (max-width: 768px) {
+    .form-group{
+        position: relative;
+        left: 0%;
+        margin-top: 10px;
+    }
+    .Filter{
+        flex-direction: column;
+    }
+    .Filter .Date{
+        position: relative;
+        left: 2%;
+        margin-top: 25px;
+    }
+    .Filter .Date label{
+        position: relative;
+        left: 5%;
+    }
+    .Filter .Date input{
+        margin-top: 6px;
+    }
+    .list-order{
+        margin: 0 -20px;
+        width: auto;
+    }
+    thead tr td{
+        font-size: 10px;
+    }
+    tbody tr td{
+        font-size: 11px;
+    }
+    td,th{
+        border: 1px solid #000;
+    }
+    tbody tr td{
+        padding: 10px 2px;
+        text-align: center;
+    }
+    table tr td:nth-child(4){
+        max-width: 100px;
+    }
+    table tr td:nth-child(3){
+        max-width: 68px;
+        padding: 0 1px;
+    }
+    table tr td:nth-child(2){
+        padding: 0;
+        max-width: 60px;
+    }
+    table tr td:nth-child(1){
+        padding: 0 0;
+    }
+    table tr td:nth-child(5){
+        max-width: 65px;
+    }
+    table tr td:nth-child(6){
+        max-width: fit-content;
+        padding: 5px 2px;
+    }
+    table tr td:nth-child(7){
+        max-width: min-content;
+        padding-left: 5px;
+        padding-right: 0;
+    }
+    .status-btn{
+        max-width: 54px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .form-group{
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        left: -18%;
+    }
+    .form-group select:last-child{
+        margin-top: 17px;
+    }
+    .Filter{
+        flex-direction: column;
+    }
+    .Filter .Date{
+        position: relative;
+        left: 2%;
+        margin-top: 25px;
+    }
+    .Filter .Date label{
+        position: relative;
+        left: 5%;
+    }
+    .Filter .Date input{
+        margin-top: 6px;
+    }
+    .list-order{
+        margin: 0 -20px;
+        width: auto;
+    }
+    thead tr td{
+        font-size: 10px;
+    }
+    tbody tr td{
+        font-size: 11px;
+    }
+    td,th{
+        border: 1px solid #000;
+    }
+    tbody tr td{
+        padding: 10px 2px;
+        text-align: center;
+    }
+    table tr td:nth-child(4){
+        max-width: 100px;
+        padding: 0 1px;
+    }
+    table tr td:nth-child(3){
+        max-width: 68px;
+        padding: 0 1px;
+    }
+    table tr td:nth-child(2){
+        padding: 0;
+        max-width: 60px;
+    }
+    table tr td:nth-child(1){
+        padding: 0 0;
+    }
+    table tr td:nth-child(5){
+        max-width: 65px;
+        padding: 0 1px;
+    }
+    table tr td:nth-child(6){
+        max-width: fit-content;
+        padding: 5px 2px;
+    }
+    table tr td:nth-child(7){
+        max-width: min-content;
+        padding-left: 5px;
+        padding-right: 0;
+    }
+    .status-btn{
+        max-width: 54px;
+    }
+}

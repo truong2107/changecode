@@ -25,8 +25,8 @@ if(!isset($_SESSION['tennguoidung'])){
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./css/admin.add-product.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="css/admin.add-product.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <link
       rel="shortcut icon"
       href="../assets/img/DMTD-Food-Logo.jpg"

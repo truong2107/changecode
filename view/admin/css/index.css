@@ -1,0 +1,166 @@
+body {
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.classQuanLy {
+  display: grid;
+  grid-template-columns: 13% 87%;
+  grid-template-rows: 5% 95%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.menu {
+  grid-row: 1 / 3;
+  grid-column: 1 / 2;
+  background-color: #f37319;
+  color: white;
+  padding: 0;
+  z-index: 1;
+  position: relative;
+  transition: transform 0.8s ease;
+  display: block;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+menu::-webkit-scrollbar {
+  display: none;
+}
+.menu i {
+  visibility: hidden;
+  position: absolute;
+  right: 0px;
+  font-size: x-large;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 25%;
+  border-bottom: 1px solid white;
+}
+.logo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logo img {
+  max-width: 25%;
+  min-height: 25%;
+  border-radius: 50%;
+  border: solid 2px;
+  cursor: pointer;
+}
+
+.logo h4,
+.logo p {
+  margin: 0;
+  text-align: center;
+}
+
+/* Danh sách menu */
+.innermenu {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+}
+.innermenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.menu-1 {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin: 7px 0;
+  padding: 20px;
+  font-size: large;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-1:hover {
+  color: black;
+  background-color: rgba(192, 200, 248, 0.973);
+}
+
+.menu-1 i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.out {
+  grid-row: 1 / 2;
+  grid-column: 1 / 3;
+  background-color: #f37319;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  position: relative;
+}
+
+.out1 {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+}
+.out1 i {
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.out1 i:hover {
+  color: yellow;
+}
+
+.content {
+  grid-column: 2 / 3;
+  background-color: rgba(128, 128, 128, 0.093);
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+.list {
+  height: 100%;
+}
+@media (max-width: 800px) {
+  .content {
+    grid-column: 1 / 3;
+  }
+  .menu {
+    display: none;
+    width: 70vw;
+  }
+  .menu i {
+    visibility: unset;
+  }
+}
+@media (max-height: 750px) and (max-width: 800px) {
+  .logo {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: none;
+  }
+}

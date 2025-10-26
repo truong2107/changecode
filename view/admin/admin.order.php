@@ -36,8 +36,8 @@ if(!isset($_SESSION['tennguoidung'])){
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./css/admin.order.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="css/admin.order.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <link
       rel="shortcut icon"
       href="../assets/img/DMTD-Food-Logo.jpg"
@@ -64,12 +64,10 @@ if(!isset($_SESSION['tennguoidung'])){
         <div class="innermenu">
         <ul>
             <li>
-              <a href="chonngay.php" class="menu-1">Thống kê</a>
-            </li>
-            <li><a href="admin.product.php" class="menu-1">Sản phẩm</a></li>
-            <li><a href="admin.order.php" class="menu-1">Đơn hàng</a></li>
-            <li>
-              <a href="./quanlytk.php" class="menu-1">Tài khoản khách hàng</a>
+                                <li><a href="selectDay.php" class="menu-1">Thống kê</a></li>
+                    <li><a href="admin.product.php" class="menu-1">Sản phẩm</a></li>
+                    <li><a href="admin.order.php" class="menu-1">Đơn hàng</a></li>
+                    <li><a href="AccountManage.php" class="menu-1">Tài khoản khách hàng</a></li>
             </li>
           </ul>
         </div>

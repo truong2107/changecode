@@ -12,7 +12,7 @@ if(!isset($_SESSION['tennguoidung'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DMTD FOOD - Thống kê</title>
     
-    <link href="../../img/DMTD-Food-Logo.jpg" rel="shortcut icon" type="image/x-icon"/>
+    <link href="../img/DMTD-Food-Logo.jpg" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
        <link rel="stylesheet" href="css/accountManage.css">
 </head>
@@ -22,17 +22,17 @@ if(!isset($_SESSION['tennguoidung'])){
             <i class="fa-solid fa-bars"></i>
             <div class="logo">
                 <div>
-                    <img src="../../img/DMTD-Food-Logo.jpg" alt="Logo"/>
+                    <img src="../img/DMTD-Food-Logo.jpg" alt="Logo"/>
                     <h4 style="white-space: unset"><?php echo $_SESSION['tennguoidung'];?></h4>
                     Chào mừng bạn trở lại
                 </div>
             </div>
             <div class="innermenu">
                 <ul>
-                    <li><a href="chonngay.php" class="menu-1">Thống kê</a></li>
+                      <li><a href="selectDay.php" class="menu-1">Thống kê</a></li>
                     <li><a href="admin.product.php" class="menu-1">Sản phẩm</a></li>
                     <li><a href="admin.order.php" class="menu-1">Đơn hàng</a></li>
-                    <li><a href="quanlytk.php" class="menu-1">Tài khoản khách hàng</a></li>
+                    <li><a href="AccountManage.php" class="menu-1">Tài khoản khách hàng</a></li>
                 </ul>
             </div>
         </div>
