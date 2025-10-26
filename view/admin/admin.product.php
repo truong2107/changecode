@@ -159,50 +159,6 @@ if(!isset($_SESSION['tennguoidung'])){
       </div>
     </div>
     <div id="warning-box"></div>
-
-    <div class="changeInfo">
-      <div class="changeInfo-content">
-        <h2>Sửa sản phẩm</h2>
-        <div class="changeInfoDetail">
-          <div class="form-group">
-            <label class="control-label">Mã sản phẩm</label>
-            <input class="form-control" type="text" />
-          </div>
-          <div class="form-group">
-            <label class="control-label">Tên sản phẩm</label>
-            <input class="form-control" type="text" />
-          </div>
-          <div class="form-group">
-            <label for="selectform" class="control-label">Trạng thái</label>
-            <select class="form-control" id="selectform">
-              <option>-- Chọn trạng thái --</option>
-              <option>Hoạt động</option>
-              <option>Dừng hoạt động</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="control-label">Giá bán</label>
-            <input class="form-control" type="number" />
-          </div>
-          <div class="form-group">
-            <button class="uploadImg">
-              <i class="fa-solid fa-arrow-up-from-bracket"></i> Chọn ảnh
-              <input type="file" />
-            </button>
-
-            <div class="img-wrapper">
-              <img src="" width="200px" height="auto" />
-              <button class="removeImg">X</button>
-            </div>
-          </div>
-
-          <div class="warning-btns">
-            <button class="btn-cancle">Hủy bỏ</button>
-            <button class="btn-save">Đồng ý</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
 <script>
@@ -328,22 +284,6 @@ if(!isset($_SESSION['tennguoidung'])){
   }
   //End pagination
 
-  const menu = document.querySelector(".menu");
-  const menuToggle = document.querySelector(".menu-toggle i");
-  menuToggle.addEventListener("click", function () {
-    if (menu instanceof HTMLElement) {
-      menu.style.display = "block";
-    }
-  });
-  const menuinput = document.querySelector(".menu i");
-  menuinput.addEventListener("click", function () {
-    if (menu instanceof HTMLElement) {
-      menu.style.display = "none";
-    }
-  });
-  
-  // Xử lý sự kiện thay đổi trạng thái checkbox
-
   // Truyền req.query ko bị reload
   document.querySelectorAll(".delete-btn").forEach(button => {
     button.addEventListener("click", function(event) {
@@ -389,89 +329,4 @@ if(!isset($_SESSION['tennguoidung'])){
     warningContent.style.display = "block";
     confirmBox.style.display = "none";
   });
-
-  // Change info product
-  const changeInfo_Box = document.querySelector(".changeInfo");
-
-  const inputs = document.querySelectorAll(".form-control");
-  const rows = document.querySelectorAll(".table tbody tr");
-
-  const uploadImg = document.querySelector(".img-wrapper img");
-
-  rows.forEach((row) => {
-    const tds = row.querySelectorAll("td");
-    const editButton = tds[5].querySelector("button:first-child");
-
-    editButton.addEventListener("click", () => {
-      X_Button.style.display = "inline-block";
-      const id = tds[0].textContent.trim();
-      const imageUrl = tds[1].querySelector("img").src;
-      const name = tds[2].textContent.trim();
-      const price = tds[3].textContent.trim().split(".").join("").slice(0, -1);
-
-      changeInfo_Box.style.display = "flex";
-
-      uploadImg.src = imageUrl;
-
-      inputs.forEach((input, index) => {
-        if (input.tagName === "SELECT") {
-          input.value = tds[4].textContent.trim();
-        } else {
-          switch (index) {
-            case 0:
-              input.value = id;
-              break;
-            case 1:
-              input.value = name;
-              break;
-
-            case 3:
-              input.value = price;
-              break;
-            default:
-              break;
-          }
-        }
-      });
-    });
-  });
-
-  const inputFile = document.querySelector(".uploadImg input");
-
-  const X_Button = document.querySelector(".removeImg");
-
-  if (uploadImg.src) {
-    X_Button.style.display = "inline-block";
-  }
-
-  inputFile.addEventListener("change", () => {
-    const file = inputFile.files[0];
-    if (file) {
-      X_Button.style.display = "inline-block";
-      const imageUrl = URL.createObjectURL(file);
-      uploadImg.src = imageUrl;
-    }
-  });
-
-  X_Button.addEventListener("click", () => {
-    uploadImg.src = "";
-    X_Button.style.display = "none";
-  });
-
-  const CancleButtonEdit = document.querySelector(
-    ".changeInfo-content .btn-cancle"
-  );
-  const SaveButtonEdit = document.querySelector(
-    ".changeInfo-content .btn-save"
-  );
-
-  CancleButtonEdit.addEventListener("click", () => {
-    changeInfo_Box.style.display = "none";
-  });
-  SaveButtonEdit.addEventListener("click", () => {
-    alert("Đã sửa thành công!!!!!");
-    changeInfo_Box.style.display = "none";
-  });
-
-  // End Change info product
 </script>

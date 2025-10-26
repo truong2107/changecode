@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $anh = $_FILES['image']['name'];
     move_uploaded_file($_FILES['image']['tmp_name'], "../../view/img/product/" . basename($anh));
 
-    $product = new ProductContr($loaisp, $tensp, $giaban, $mota, $anh, $trangthai, 0);
+    $product = new ProductAddContr($loaisp, $tensp, $giaban, $mota, $anh, $trangthai, 0);
     $result = $product->addProduct();
 }
 

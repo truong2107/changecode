@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ProductAddClass.php"; 
 
-class ProductContr extends ProductAddClass{
+class ProductAddContr extends ProductAddClass{
     private $tenSP;
     private $gia;
     private $moTa;

@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ProductClass.php"; 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ProductEditClass.php"; 
 
-class ProductEditContr extends ProductClass{
+class ProductEditContr extends ProductEditClass{
     private $maSP;
     private $tenSP;
     private $gia;
