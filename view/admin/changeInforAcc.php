@@ -26,8 +26,12 @@ if (!$userData) {
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      href="../img/DMTD-Food-Logo.jpg"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
     <title>Chỉnh sửa tài khoản #<?php echo htmlspecialchars($userId); ?></title>
-    <link href="../../img/DMTD-Food-Logo.jpg" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/changeInforAcc.css">
     <script>

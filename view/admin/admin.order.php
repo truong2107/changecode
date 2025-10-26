@@ -9,7 +9,11 @@ $ward      = $_GET['ward']       ?? '';
 $startDate = $_GET['start_date'] ?? '';
 $endDate   = $_GET['end_date']   ?? '';
 
-$districts = $orderContr->getDistricts();
+if (!empty($startDate) || !empty($endDate)) {
+  $districts = $orderContr->getDistrictsByDate($startDate, $endDate);
+} else {
+  $districts = $orderContr->getDistricts();
+}
 $wards = (!empty($district) && $district != 'all') ? $orderContr->getWards($district) : null;
 
 $orders = $orderContr->filterOrders($status, $district, $ward, $startDate, $endDate);

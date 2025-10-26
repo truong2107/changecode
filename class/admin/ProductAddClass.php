@@ -5,7 +5,7 @@ class ProductAddClass extends DataBaseClass{
     protected function insertProduct($maLoaiSP, $tenSP, $gia, $moTa, $anh, $trangthai, $soLuongBan){
         $conn = $this->connect();
 
-        $sql = "INSERT INTO sanpham (MaLoaiSP, TenSP, DonGia, SoLuongBan, MoTa, HinhAnh, TrangThai) VALUES ('$maLoaiSP', '$tenS', '$gia', '$soLuongBan', '$moTa', '$anh', '$trangthai' )";
+        $sql = "INSERT INTO sanpham (MaLoaiSP, TenSP, DonGia, SoLuongBan, MoTa, HinhAnh, TrangThai) VALUES ('$maLoaiSP', '$tenSP', '$gia', '$soLuongBan', '$moTa', '$anh', '$trangthai' )";
 
         if (mysqli_query($conn, $sql)) {
             header("Location: ../../view/admin/admin.product.php");

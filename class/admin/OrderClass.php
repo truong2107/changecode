@@ -21,7 +21,7 @@ class OrderClass extends DataBaseClass {
 
     protected function getDistinctDistricts() {
         $conn = $this->connect();
-        $sql = "SELECT DISTINCT quan_huyen FROM hoadon";
+        $sql = "SELECT DISTINCT quan_huyen FROM hoadon ORDER BY (quan_huyen REGEXP 'Quận [0-9]+') DESC, CAST(SUBSTRING_INDEX(quan_huyen, ' ', -1) AS UNSIGNED)";
         return $conn->query($sql);
     }
 
@@ -60,6 +60,28 @@ class OrderClass extends DataBaseClass {
         }
 
         $sql .= " ORDER BY IdHoaDon DESC";
+        return $conn->query($sql);
+    }
+
+    protected function getDistrictsByDate($start_date, $end_date) {
+        $conn = $this->connect();
+
+        $conditions = [];
+        if (!empty($start_date)) {
+            if (strpos($start_date, ':') === false) $start_date .= " 00:00:00";
+            $conditions[] = "NgayDatHang >= '$start_date'";
+        }
+        if (!empty($end_date)) {
+            if (strpos($end_date, ':') === false) $end_date .= " 23:59:59";
+            $conditions[] = "NgayDatHang <= '$end_date'";
+        }
+
+        $sql = "SELECT DISTINCT quan_huyen FROM hoadon";
+        if (!empty($conditions)) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
+        }
+        $sql .= " ORDER BY (quan_huyen REGEXP 'Quận [0-9]+') DESC, CAST(SUBSTRING_INDEX(quan_huyen, ' ', -1) AS UNSIGNED)";
+
         return $conn->query($sql);
     }
 }

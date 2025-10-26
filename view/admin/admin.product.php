@@ -23,11 +23,6 @@ if(!isset($_SESSION['tennguoidung'])){
     />
     <link rel="stylesheet" href="css/admin.product.css" />
     <link rel="stylesheet" href="css/index.css" />
-    <link
-      rel="shortcut icon"
-      href="../assets/img/DMTD-Food-Logo.jpg"
-      type="image/x-icon"
-    />
     <title>DMTD FOOD</title>
   </head>
 
@@ -162,171 +157,171 @@ if(!isset($_SESSION['tennguoidung'])){
   </body>
 </html>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      document.querySelectorAll(".delete-btn").forEach((button) => {
-          button.addEventListener("click", function () {
-              let productId = this.getAttribute("data-id");
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".delete-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+            let productId = this.getAttribute("data-id");
 
-              fetch(`../../inc/admin/warning-box.php?id=${productId}`)
+            fetch(`../../inc/admin/warning-box.php?id=${productId}`)
+              .then((response) => response.text())
+              .then((data) => {
+                  let warningBox = document.getElementById("warning-box");
+                  warningBox.innerHTML = data;
+
+                  let warning = document.querySelector(".warning");
+                  if (warning) {
+                      warning.style.display = "flex";
+                      
+                      // Lưu lại ID sản phẩm vào nút "Đồng ý"
+                      document.querySelector(".btn-save").setAttribute("data-id", productId);
+                  }
+              })
+              .catch((error) => console.error("Lỗi:", error));
+        });
+    });
+
+    // Xử lý khi bấm "Đồng ý"
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-save")) {
+            let action = event.target.getAttribute("data-act"); // "delete" hoặc "hide"
+            let productId = event.target.getAttribute("data-id");
+
+            let url = action === "delete"
+                ? `../../inc/admin/delete-product.php?id=${productId}`
+                : `../../inc/admin/hide-product.php?id=${productId}`;
+
+            fetch(url, { method: "POST" })
                 .then((response) => response.text())
                 .then((data) => {
-                    let warningBox = document.getElementById("warning-box");
-                    warningBox.innerHTML = data;
+                    alert(data); // Thông báo kết quả
 
+                    // Ẩn hộp cảnh báo sau khi thực hiện
                     let warning = document.querySelector(".warning");
                     if (warning) {
-                        warning.style.display = "flex";
-                        
-                        // Lưu lại ID sản phẩm vào nút "Đồng ý"
-                        document.querySelector(".btn-save").setAttribute("data-id", productId);
+                        warning.style.display = "none";
+                        document.getElementById("warning-box").innerHTML = "";
+                        location.reload(); // Tải lại danh sách sản phẩm
                     }
                 })
                 .catch((error) => console.error("Lỗi:", error));
-          });
-      });
+        }
+    });
 
-      // Xử lý khi bấm "Đồng ý"
-      document.addEventListener("click", function (event) {
-          if (event.target.classList.contains("btn-save")) {
-              let action = event.target.getAttribute("data-act"); // "delete" hoặc "hide"
-              let productId = event.target.getAttribute("data-id");
-
-              let url = action === "delete"
-                  ? `../../inc/admin/delete-product.php?id=${productId}`
-                  : `../../inc/admin/hide-product.php?id=${productId}`;
-
-              fetch(url, { method: "POST" })
-                  .then((response) => response.text())
-                  .then((data) => {
-                      alert(data); // Thông báo kết quả
-
-                      // Ẩn hộp cảnh báo sau khi thực hiện
-                      let warning = document.querySelector(".warning");
-                      if (warning) {
-                          warning.style.display = "none";
-                          document.getElementById("warning-box").innerHTML = "";
-                          location.reload(); // Tải lại danh sách sản phẩm
-                      }
-                  })
-                  .catch((error) => console.error("Lỗi:", error));
-          }
-      });
-
-      // Sự kiện đóng hộp cảnh báo khi bấm "Hủy bỏ"
-      document.addEventListener("click", function (event) {
-          if (event.target.classList.contains("btn-cancle")) {
-              let warning = document.querySelector(".warning");
-              if (warning) {
-                      warning.style.display = "none";
-                      document.getElementById("warning-box").innerHTML = ""; 
-              }
-          }
-      });
-  });
+    // Sự kiện đóng hộp cảnh báo khi bấm "Hủy bỏ"
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-cancle")) {
+            let warning = document.querySelector(".warning");
+            if (warning) {
+                    warning.style.display = "none";
+                    document.getElementById("warning-box").innerHTML = ""; 
+            }
+        }
+    });
+});
 
 
+window.history.replaceState({}, document.title, window.location.pathname);
+document.addEventListener("DOMContentLoaded", function() {
+  // Xóa query parameters khi trang load
   window.history.replaceState({}, document.title, window.location.pathname);
-  document.addEventListener("DOMContentLoaded", function() {
-    // Xóa query parameters khi trang load
-    window.history.replaceState({}, document.title, window.location.pathname);
-  });
-  //Pagination
-  let thisPage = 1;
-  let limit = 5;
-  let list = document.querySelectorAll(".table tbody tr ");
+});
+//Pagination
+let thisPage = 1;
+let limit = 5;
+let list = document.querySelectorAll(".table tbody tr ");
 
-  function loadItem(){
-    let beginGet = limit * (thisPage - 1);
-    let endGet = limit * thisPage -1;
-    list.forEach((item, index) =>{
-      if(index >= beginGet && index <= endGet){
-        item.style.display = "table-row";
-      }
-      else{
-        item.style.display = "none";
-      }
-    });
-    listPage();
+function loadItem(){
+  let beginGet = limit * (thisPage - 1);
+  let endGet = limit * thisPage -1;
+  list.forEach((item, index) =>{
+    if(index >= beginGet && index <= endGet){
+      item.style.display = "table-row";
+    }
+    else{
+      item.style.display = "none";
+    }
+  });
+  listPage();
+}
+loadItem();
+function listPage(){
+  let count = Math.ceil(list.length / limit);
+  document.querySelector(".listPage").innerHTML = ""; 
+
+  if(thisPage != 1){
+    let prev = document.createElement('li');
+    prev.innerText = '<';
+    prev.setAttribute('onclick', "changePage("+ (thisPage - 1) + ")");
+    document.querySelector('.listPage').appendChild(prev); 
   }
+
+  for(i = 1; i<= count; i++){
+    let newPage = document.createElement('li');
+    newPage.innerText = i;
+    if(i == thisPage){
+      newPage.classList.add("active");
+    }
+    newPage.setAttribute('onclick', "changePage("+ i + ")");
+    document.querySelector('.listPage').appendChild(newPage); 
+  }
+
+  if(thisPage != count){
+    let next = document.createElement('li');
+    next.innerText = '>';
+    next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
+    document.querySelector(".listPage").appendChild(next);
+  }
+}
+
+function changePage(i){
+  thisPage = i;
   loadItem();
-  function listPage(){
-    let count = Math.ceil(list.length / limit);
-    document.querySelector(".listPage").innerHTML = ""; 
+}
+//End pagination
 
-    if(thisPage != 1){
-      let prev = document.createElement('li');
-      prev.innerText = '<';
-      prev.setAttribute('onclick', "changePage("+ (thisPage - 1) + ")");
-      document.querySelector('.listPage').appendChild(prev); 
-    }
-
-    for(i = 1; i<= count; i++){
-      let newPage = document.createElement('li');
-      newPage.innerText = i;
-      if(i == thisPage){
-        newPage.classList.add("active");
-      }
-      newPage.setAttribute('onclick', "changePage("+ i + ")");
-      document.querySelector('.listPage').appendChild(newPage); 
-    }
-
-    if(thisPage != count){
-      let next = document.createElement('li');
-      next.innerText = '>';
-      next.setAttribute('onclick', "changePage(" + (thisPage + 1) + ")");
-      document.querySelector(".listPage").appendChild(next);
-    }
-  }
-
-  function changePage(i){
-    thisPage = i;
-    loadItem();
-  }
-  //End pagination
-
-  // Truyền req.query ko bị reload
-  document.querySelectorAll(".delete-btn").forEach(button => {
-    button.addEventListener("click", function(event) {
-        event.preventDefault(); 
-        let id = this.getAttribute("data-id");
-        let url = new URL(window.location.href);
-        url.searchParams.set("id", id);
-        history.pushState(null, "", url); // Cập nhật URL mà không reload
-    });
+// Truyền req.query ko bị reload
+document.querySelectorAll(".delete-btn").forEach(button => {
+  button.addEventListener("click", function(event) {
+      event.preventDefault(); 
+      let id = this.getAttribute("data-id");
+      let url = new URL(window.location.href);
+      url.searchParams.set("id", id);
+      history.pushState(null, "", url); // Cập nhật URL mà không reload
   });
+});
 
-  // End Truyền req.query ko bị reload
+// End Truyền req.query ko bị reload
 
-  const btnDelete = document.querySelectorAll(
-    ".table tbody tr td:nth-child(6) button"
-  );
-  
+const btnDelete = document.querySelectorAll(
+  ".table tbody tr td:nth-child(6) button"
+);
 
-  const warningBox = document.querySelector(".warning");
-  const warningContent = document.querySelector(".warning-content");
-  const confirmBox = document.querySelector(".confirm");
 
-  btnDelete.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      warningBox.style.display = "flex";
-    });
+const warningBox = document.querySelector(".warning");
+const warningContent = document.querySelector(".warning-content");
+const confirmBox = document.querySelector(".confirm");
+
+btnDelete.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    warningBox.style.display = "flex";
   });
+});
 
-  const btnCancle = document.querySelector(".btn-cancle");
-  const btnSave = document.querySelector(".btn-save");
+const btnCancle = document.querySelector(".btn-cancle");
+const btnSave = document.querySelector(".btn-save");
 
-  btnSave.addEventListener("click", () => {
-    warningContent.style.display = "none";
-    confirmBox.style.display = "block";
-  });
-  btnCancle.addEventListener("click", () => {
-    warningBox.style.display = "none";
-  });
+btnSave.addEventListener("click", () => {
+  warningContent.style.display = "none";
+  confirmBox.style.display = "block";
+});
+btnCancle.addEventListener("click", () => {
+  warningBox.style.display = "none";
+});
 
-  const confirmBtn = document.querySelector(".btn-confirm");
-  confirmBtn.addEventListener("click", () => {
-    warningBox.style.display = "none";
-    warningContent.style.display = "block";
-    confirmBox.style.display = "none";
-  });
+const confirmBtn = document.querySelector(".btn-confirm");
+confirmBtn.addEventListener("click", () => {
+  warningBox.style.display = "none";
+  warningContent.style.display = "block";
+  confirmBox.style.display = "none";
+});
 </script>

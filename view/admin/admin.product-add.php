@@ -48,10 +48,10 @@ if(!isset($_SESSION['tennguoidung'])){
         </div>
         <div class="innermenu">
         <ul>
-                      <li><a href="selectDay.php" class="menu-1">Thống kê</a></li>
-                    <li><a href="admin.product.php" class="menu-1">Sản phẩm</a></li>
-                    <li><a href="admin.order.php" class="menu-1">Đơn hàng</a></li>
-                    <li><a href="AccountManage.php" class="menu-1">Tài khoản khách hàng</a></li>
+              <li><a href="selectDay.php" class="menu-1">Thống kê</a></li>
+              <li><a href="admin.product.php" class="menu-1">Sản phẩm</a></li>
+              <li><a href="admin.order.php" class="menu-1">Đơn hàng</a></li>
+              <li><a href="AccountManage.php" class="menu-1">Tài khoản khách hàng</a></li>
           </ul>
         </div>
       </div>
@@ -91,7 +91,7 @@ if(!isset($_SESSION['tennguoidung'])){
                 </div>
                 <div class="form-group">
                   <label class="control-label">Giá bán</label>
-                  <input class="form-control" type="number" name="price" min="0" required/>
+                  <input class="form-control" type="number" name="price" min="0" onkeydown="if(['e','E','+','-'].includes(event.key)) event.preventDefault();" required/>
                 </div>
                 <div class="form-group">
                   <label for="selectform" class="control-label">Loại</label>
@@ -137,41 +137,41 @@ if(!isset($_SESSION['tennguoidung'])){
 </html>
 <script>
 
-  document.addEventListener("DOMContentLoaded", function () {
-      const fileInput = document.querySelector(".uploadImg input");
-      const imgWrapper = document.querySelector(".img-wrapper");
-      const imgPreview = document.querySelector(".img-wrapper img");
-      const removeImgBtn = document.querySelector(".removeImg");
+document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.querySelector(".uploadImg input");
+    const imgWrapper = document.querySelector(".img-wrapper");
+    const imgPreview = document.querySelector(".img-wrapper img");
+    const removeImgBtn = document.querySelector(".removeImg");
 
-      // Ẩn ảnh & nút X khi trang vừa load
-      imgPreview.style.display = "none";
-      removeImgBtn.style.display = "none";
+    // Ẩn ảnh & nút X khi trang vừa load
+    imgPreview.style.display = "none";
+    removeImgBtn.style.display = "none";
 
-      fileInput.addEventListener("change", function (event) {
-          const file = event.target.files[0];
+    fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
 
-          if (file) {
-              const reader = new FileReader();
-              reader.onload = function (e) {
-                  imgPreview.src = e.target.result;
-                  imgPreview.style.display = "block"; // Hiện ảnh
-                  removeImgBtn.style.display = "inline-block"; // Hiện nút X
-              };
-              reader.readAsDataURL(file);
-          }
-      });
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imgPreview.src = e.target.result;
+                imgPreview.style.display = "block"; // Hiện ảnh
+                removeImgBtn.style.display = "inline-block"; // Hiện nút X
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
-      removeImgBtn.addEventListener("click", function () {
-          imgPreview.src = "";
-          fileInput.value = "";
-          imgPreview.style.display = "none"; // Ẩn ảnh
-          removeImgBtn.style.display = "none"; // Ẩn nút X
-      });
-  });
+    removeImgBtn.addEventListener("click", function () {
+        imgPreview.src = "";
+        fileInput.value = "";
+        imgPreview.style.display = "none"; // Ẩn ảnh
+        removeImgBtn.style.display = "none"; // Ẩn nút X
+    });
+});
 
-  const btnCancle = document.querySelector(".btn-cancle");
-  btnCancle.addEventListener("click", () => {
-    window.location.href = "./admin.product.php";
-  });
+const btnCancle = document.querySelector(".btn-cancle");
+btnCancle.addEventListener("click", () => {
+  window.location.href = "./admin.product.php";
+});
 
 </script>

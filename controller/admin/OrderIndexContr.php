@@ -32,6 +32,10 @@ class OrderIndexContr extends OrderClass{
         if (!$result || $result->num_rows === 0) return [];
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getDistrictsByDate($start_date, $end_date) {
+        return parent::getDistrictsByDate($start_date, $end_date);
+    }
 }
 
 ?>

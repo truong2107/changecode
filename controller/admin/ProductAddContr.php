@@ -20,7 +20,7 @@ class ProductAddContr extends ProductAddClass{
         $this->soLuongBan = $soLuongBan;
     }
 
-    public addProduct(){
+    public function addProduct(){
         $this->insertProduct($this->maLoaiSP, $this->tenSP, $this->gia, $this->moTa, $this->anh, $this->trangthai, $this->soLuongBan);
     }
 }
