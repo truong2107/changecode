@@ -65,7 +65,7 @@ $orders = $data['orders'];
                             <?php foreach ($order['products'] as $product): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($product['TenSP']); ?></td>
-                                    <td><img src="../../img/product/<?php echo htmlspecialchars($product['HinhAnh']); ?>" alt=""></td>
+                                    <td><img src="../img/product/<?php echo htmlspecialchars($product['HinhAnh']); ?>" alt=""></td>
                                     <td><?php echo number_format($product['DonGia'], 0, '', '.'); ?></td>
                                     <td><?php echo $product['SoLuong']; ?></td>
                                     <td><?php echo number_format($product['DonGia'] * $product['SoLuong'], 0, '', '.'); ?></td>
