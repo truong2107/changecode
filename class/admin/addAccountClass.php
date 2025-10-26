@@ -1,17 +1,9 @@
 <?php
-// File: /web/class/admin/ThemmoiClass.php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/DataBaseClass.php";
 
 class ThemmoiClass extends DatabaseClass {
 
-    /**
-     * KIỂM TRA XEM TÊN ĐĂNG NHẬP HOẶC EMAIL ĐÃ TỒN TẠI CHƯA.
-     * Đây là hàm cốt lõi để kiểm tra trùng lặp.
-     * @param string $tenDangNhap
-     * @param string $email
-     * @return bool Trả về true nếu ĐÃ TỒN TẠI, false nếu CHƯA TỒN TẠI.
-     */
     protected function checkUserExists($tenDangNhap, $email) {
         $conn = $this->connect();
         

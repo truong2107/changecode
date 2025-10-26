@@ -1,5 +1,5 @@
 <?php
-// File: /web/controller/admin/ToggleUserStatusContr.php
+
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ToggleUserStatusClass.php"; 
 

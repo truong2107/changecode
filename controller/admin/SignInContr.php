@@ -1,5 +1,5 @@
 <?php
-// File: /web/controller/admin/AdminSignInContr.php
+
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/SignInClass.php"; 
 

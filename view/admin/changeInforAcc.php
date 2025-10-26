@@ -5,20 +5,18 @@ if (!isset($_SESSION['tennguoidung'])) {
     exit();
 }
 
-// --- PHẦN LẤY DỮ LIỆU ĐỂ HIỂN THỊ (GET) ---
+
 if (!isset($_GET['this_id']) || !is_numeric($_GET['this_id'])) {
-    header("location: accountMange.php"); // Nếu không có ID hoặc ID không phải là số, quay về
+    header("location: accountMange.php"); 
     exit();
 }
 
 $userId = $_GET['this_id'];
 
-// Gọi Controller để lấy thông tin user
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/controller/admin/ChangeInforAccContr.php";
-$userController = new ChangeInforAccContr(); // Khởi tạo không cần tham số
+$userController = new ChangeInforAccContr(); 
 $userData = $userController->showUser($userId);
 
-// Nếu không tìm thấy user với ID này, quay về trang quản lý
 if (!$userData) {
     header("location: accountMange.php");
     exit();
@@ -31,26 +29,8 @@ if (!$userData) {
     <title>Chỉnh sửa tài khoản #<?php echo htmlspecialchars($userId); ?></title>
     <link href="../../img/DMTD-Food-Logo.jpg" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        /* Toàn bộ CSS từ file gốc của bạn được dán vào đây */
-        body {font-family: Arial, Helvetica, sans-serif;}
-        * {box-sizing: border-box;}
-        .container{ background-color: #ffff; width: 450px; padding: 1.5rem; margin: 50px auto; border-radius: 10px; box-shadow: 0 20px 35px rgba(0,0,1,0.5); }
-        .container h2{ font: size 1.5rem; font-weight:bold; text-align:center; padding: 1.3rem; margin-top:0.1rem; margin-bottom:0.2rem; }
-        .input-container { display: flex; width: 100%; margin-bottom: 15px; flex-direction: column; }
-        .icon { padding: 10px; background: #f37319; color: white; width: 50px; text-align: center; }
-        .input-row { display: flex; }
-        .input-field { width: 100%; padding: 10px; outline: none; border: 1px solid #ccc; }
-        .input-field:focus { border: 2px solid black; }
-        .error-message { color: red; font-size: 12px; margin-top: 5px; display: none; }
-        input[type=submit] { background-color: #f37319; color: white; padding: 15px 20px; border: none; cursor: pointer; width: 100%; opacity: 0.9; }
-        input[type=submit]:hover { opacity: 1; }
-        .links{ display:flex; justify-content:center; padding:0 4rem; margin-top:0.3rem; font-weight:bold; }
-        .links a{ color:#F37319; text-decoration:none; margin: 16px 0px 0px 2px; font-size:1rem; font-weight:bold; }
-        .links a:hover{ cursor: pointer; text-decoration:underline; color: red; }
-    </style>
+<link rel="stylesheet" href="css/changeInforAcc.css">
     <script>
-// Mảng dữ liệu quận huyện nội thành TPHCM
 const quanHuyenData = {
   "Quận 1": ["Bến Nghé", "Bến Thành", "Cầu Kho", "Cầu Ông Lãnh", "Đa Kao", "Nguyễn Cư Trinh", "Nguyễn Thái Bình", "Phạm Ngũ Lão", "Tân Định"],
   "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10", "Phường 11", "Phường 12", "Phường 13", "Phường 14"],
@@ -76,30 +56,26 @@ const quanHuyenData = {
   "Huyện Nhà Bè": ["Hiệp Phước", "Long Thới", "Nhà Bè", "Nhơn Đức", "Phú Xuân", "Phước Kiển", "Phước Lộc"],
 };
 
-// Cập nhật danh sách huyện khi quận thay đổi
 function updateHuyen() {
   const quanSelect = document.getElementById('quan_huyen');
   const huyenSelect = document.getElementById('phuong_xa');
   const selectedQuan = quanSelect.value;
   
-  // Xóa tất cả các option hiện tại
   huyenSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
   
-  // Thêm các option mới dựa trên quận được chọn
   if (selectedQuan && quanHuyenData[selectedQuan]) {
     quanHuyenData[selectedQuan].forEach(huyen => {
       const option = document.createElement('option');
       option.value = huyen;
       option.textContent = huyen;
             if (huyen === "<?php echo $userData['phuong_xa']; ?>") { 
-        option.selected = true; // Chọn sẵn phường đã lưu
+        option.selected = true; 
       }
       huyenSelect.appendChild(option);
     });
   }
 }
 
-// Gọi hàm khi trang tải xong
 window.onload = function () {
   updateHuyen();
 };
@@ -165,7 +141,7 @@ window.onload = function () {
                 <select class="input-field" id="quan_huyen" name="quan_huyen" onchange="updateHuyen()" required>
                     <option value="">Chọn quận/huyện</option>
                     <?php
-                        // Tạo mảng các quận huyện từ JS object để dễ lặp
+                     
                         $quan_huyen_list = ["Quận 1", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Quận 10", "Quận 11", "Quận 12", "Quận Bình Tân", "Quận Bình Thạnh", "Quận Gò Vấp", "Quận Phú Nhuận", "Quận Tân Bình", "Quận Tân Phú", "Thành phố Thủ Đức", "Huyện Bình Chánh", "Huyện Cần Giờ", "Huyện Củ Chi", "Huyện Hóc Môn", "Huyện Nhà Bè"];
                         foreach ($quan_huyen_list as $quan) {
                             $selected = ($userData['quan_huyen'] == $quan) ? 'selected' : '';
@@ -192,7 +168,7 @@ window.onload = function () {
     </form>
 </div>
 <script>
-// Hiển thị thông báo lỗi nếu có
+
 <?php if($emailError): ?>
     document.getElementById('emailError').style.display = 'block';
 <?php
@@ -201,7 +177,7 @@ window.onload = function () {
 ob_end_flush();
 ?>
 
-// Reset thông báo lỗi khi người dùng bắt đầu nhập lại
+
 document.querySelector('input[name="email"]').addEventListener('input', function() {
     document.getElementById('emailError').style.display = 'none';
 });

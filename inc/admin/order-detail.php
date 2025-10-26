@@ -15,20 +15,20 @@ if (!$order) {
   exit();
 }
 
-// Xử lý status
+
 $status = isset($_GET['status']) ? intval($_GET['status']) : intval($order["TrangThai"]);
 $result = $orderDetailContr->updateStatus($id, $status);
 
-// Nếu cần redirect về URL chuẩn
+
 if (isset($result['redirect'])) {
   ob_clean();
   header("Location: " . $result['redirect']);
   exit();
 }
 
-// Trạng thái hiện tại
+
 $currentStatus = $result['currentStatus'] ?? intval($order["TrangThai"]);
 
-// Lấy sản phẩm trong đơn
+
 $products = $orderDetailContr->getProducts($id);
 ?>

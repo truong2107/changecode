@@ -5,16 +5,15 @@ if (!isset($_SESSION['tennguoidung'])) {
     exit();
 }
 
-// Lấy ngày tháng từ URL và kiểm tra
+
 if (!isset($_GET['from']) || !isset($_GET['to']) || empty($_GET['from']) || empty($_GET['to'])) {
-    // Nếu không có ngày tháng, quay về trang chọn ngày
+
     header("location: chonngay.php");
     exit();
 }
 $from = $_GET['from'];
 $to = $_GET['to'];
 
-// Gọi Controller để lấy dữ liệu thống kê
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/controller/admin/StatisticsContr.php";
 $statistics = new StatisticsContr();
 $reportData = $statistics->showTopCustomersReport($from, $to);
@@ -60,7 +59,6 @@ $reportData = $statistics->showTopCustomersReport($from, $to);
             </div>
 
             <?php
-            // Kiểm tra xem Controller có trả về dữ liệu không
             if (empty($reportData)) {
             ?>
                 <div class="thongbao"><p>Không có dữ liệu để hiển thị cho khoảng thời gian này.</p></div>
@@ -78,7 +76,6 @@ $reportData = $statistics->showTopCustomersReport($from, $to);
                     </tr>
                     <?php
                     $i = 0;
-                    // Dùng foreach để duyệt mảng dữ liệu sạch từ Controller
                     foreach ($reportData as $row) {
                         $i++;
                     ?>
@@ -98,11 +95,11 @@ $reportData = $statistics->showTopCustomersReport($from, $to);
                             </td>
                         </tr>
                     <?php
-                    } // Kết thúc foreach
+                    } 
                     ?>
                 </table>
             <?php
-            } // Kết thúc else
+            } 
             ?>
             <div class="back"><a href="chonngay.php"><button>Quay lại</button></a></div>
         </div>

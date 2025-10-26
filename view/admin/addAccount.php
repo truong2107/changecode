@@ -37,7 +37,6 @@ if (!isset($_SESSION['tennguoidung'])) {
         </div>
         
         <?php 
-        // Hiển thị lỗi từ URL theo đúng mô hình
         if (isset($_GET['error']) && $_GET['error'] == 'useroremailtaken') {
             echo '<div style="color:red; text-align:start; margin-bottom: 10px;font-size:small;">
                     Tên đăng nhập hoặc Email đã tồn tại.
@@ -99,7 +98,6 @@ if (!isset($_SESSION['tennguoidung'])) {
     </form>
 </div>
 <script>
-// Mảng dữ liệu quận huyện nội thành TPHCM
 const quanHuyenData = {
   "Quận 1": ["Bến Nghé", "Bến Thành", "Cầu Kho", "Cầu Ông Lãnh", "Đa Kao", "Nguyễn Cư Trinh", "Nguyễn Thái Bình", "Phạm Ngũ Lão", "Tân Định"],
   "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10", "Phường 11", "Phường 12", "Phường 13", "Phường 14"],
@@ -125,16 +123,12 @@ const quanHuyenData = {
   "Huyện Nhà Bè": ["Hiệp Phước", "Long Thới", "Nhà Bè", "Nhơn Đức", "Phú Xuân", "Phước Kiển", "Phước Lộc"],
 };
 
-// Cập nhật danh sách huyện khi quận thay đổi
 function updateHuyen() {
   const quanSelect = document.getElementById('quan_huyen');
   const huyenSelect = document.getElementById('phuong_xa');
   const selectedQuan = quanSelect.value;
   
-  // Xóa tất cả các option hiện tại
   huyenSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
-  
-  // Thêm các option mới dựa trên quận được chọn
   if (selectedQuan && quanHuyenData[selectedQuan]) {
     quanHuyenData[selectedQuan].forEach(huyen => {
       const option = document.createElement('option');

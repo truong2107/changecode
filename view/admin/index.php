@@ -1,6 +1,6 @@
 <?php
 session_start();
-// Nếu admin đã đăng nhập rồi thì chuyển thẳng vào trong, không cho quay lại trang login
+
 if (isset($_SESSION['tennguoidung'])) {
     header("location: accountManage.php");
     exit();
@@ -15,12 +15,6 @@ if (isset($_SESSION['tennguoidung'])) {
     <link rel="stylesheet" href="css/dangnhap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <title>DMTD FOOD - ADMIN</title>
-    <!-- <style>
-        /* Toàn bộ CSS của bạn giữ nguyên ở đây */
-        body {font-family: Arial, Helvetica, sans-serif;}
-        * {box-sizing: border-box;}
-        /* ... dán toàn bộ CSS từ file gốc vào đây ... */
-    </style> -->
 </head>
 <body>
 
@@ -40,7 +34,6 @@ if (isset($_SESSION['tennguoidung'])) {
 </div>
 
 <?php 
-// Hiển thị modal lỗi dựa trên tham số 'error' trên URL
 if (isset($_GET['error'])) {
     $errorType = $_GET['error'];
     echo '<script> document.addEventListener("DOMContentLoaded", function() {';
@@ -58,7 +51,6 @@ if (isset($_GET['error'])) {
 ?>
 
 <script>
-    // Toàn bộ JavaScript để hiển thị modal của bạn giữ nguyên ở đây
     function showLoginErrorModal(message) {
         const modalContainer = document.createElement("div");
         modalContainer.id = "modal-container";
@@ -91,7 +83,6 @@ if (isset($_GET['error'])) {
         if (!document.getElementById("modal-style")) {
             const style = document.createElement("style");
             style.id = "modal-style";
-            // ... Dán toàn bộ CSS của modal vào đây ...
             style.textContent = `
             #modal-container { height: 100vh; background-color: rgb(0,0,0,0.5); position: fixed; top: 0; left: 0; width: 100%; opacity: 0; pointer-events: none; z-index: 1000; }
             #modal-container.show { opacity: 1; pointer-events: all; }

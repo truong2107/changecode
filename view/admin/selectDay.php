@@ -74,7 +74,6 @@ if(!isset($_SESSION['tennguoidung'])){
         .btn:hover { background-color: orange; color: white; }
     </style>
     <script>
-        // Toàn bộ script menu của bạn
         const menu = document.querySelector(".menu");
         const menuToggle = document.querySelector(".menu-toggle i");
         menuToggle.addEventListener("click", function () {

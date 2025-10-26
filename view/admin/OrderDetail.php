@@ -5,7 +5,7 @@ if (!isset($_SESSION['tennguoidung'])) {
     exit();
 }
 
-// Lấy thông tin từ URL
+
 $userId = isset($_GET['thisid']) ? (int)$_GET['thisid'] : 0;
 $from = isset($_GET['from']) ? $_GET['from'] : '';
 $to = isset($_GET['to']) ? $_GET['to'] : '';
@@ -15,12 +15,12 @@ if ($userId <= 0 || empty($from) || empty($to)) {
     exit();
 }
 
-// Gọi Controller để lấy dữ liệu
+
 require_once $_SERVER['DOCUMENT_ROOT'] . "/web/controller/admin/OrderDetailContr.php";
 $historyController = new CustomerHistoryContr();
 $data = $historyController->showCustomerHistory($userId, $from, $to);
 
-// Nếu không tìm thấy khách hàng, thông báo lỗi
+
 if (!$data) {
     die("Không tìm thấy thông tin khách hàng.");
 }
@@ -34,7 +34,6 @@ $orders = $data['orders'];
     <title>Lịch sử mua hàng của <?php echo htmlspecialchars($customer['tenNguoiDung']); ?></title>
     <link href="../../img/DMTD-Food-Logo.jpg" rel="shortcut icon" type="image/x-icon"/>
     <link rel="stylesheet" href="css/OrderDetail.css">
-    <style> /* ... dán toàn bộ CSS từ file gốc vào đây ... */ </style>
 </head>
 <body>
 <div class="ThongTin">
