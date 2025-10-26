@@ -100,7 +100,7 @@ if(!isset($_SESSION['tennguoidung'])){
               
                 <div class="form-group">
 
-                  <select id="filter-district" name="district" onchange="this.form.submit()">  
+                  <select id="filter-district" name="district" onchange="resetWardAndSubmit()">  
                     <option selected disabled <?php echo empty($district) ? 'selected' : ''; ?>>Quận/Huyện</option>
                     <option value="all" <?php echo ($district == 'all') ? 'selected' : ''; ?>>Tất cả</option>
                     <?php 
@@ -112,7 +112,7 @@ if(!isset($_SESSION['tennguoidung'])){
                   </select>
 
 
-                  <select id="filter-ward " name="ward" onchange="this.form.submit()">
+                  <select id="filter-ward" name="ward" onchange="this.form.submit()">
                     <option selected disabled <?php echo empty($ward) ? 'selected' : ''; ?>>Phường/Xã</option>
                     <option value="all" <?php echo ($ward == 'all') ? 'selected' : ''; ?>>Tất cả</option>
                     <?php 
@@ -216,4 +216,10 @@ if(!isset($_SESSION['tennguoidung'])){
     </div>
   </body>
 </html>
-
+<script>
+function resetWardAndSubmit() {
+  const wardSelect = document.getElementById('filter-ward');
+  wardSelect.value = 'all'; // reset phường về "all"
+  wardSelect.form.submit();  // submit form
+}
+</script>

@@ -173,21 +173,6 @@ if(!isset($_SESSION['tennguoidung'])){
       });
   });
 
-  const menu = document.querySelector(".menu");
-  const menuToggle = document.querySelector(".menu-toggle i");
-  menuToggle.addEventListener("click", function () {
-    if (menu instanceof HTMLElement) {
-      menu.style.display = "block";
-    }
-  });
-  const menuinput = document.querySelector(".menu i");
-  menuinput.addEventListener("click", function () {
-    if (menu instanceof HTMLElement) {
-      menu.style.display = "none";
-    }
-  });
-  // Xử lý sự kiện thay đổi trạng thái checkbox
-
   const btnCancle = document.querySelector(".btn-cancle");
   btnCancle.addEventListener("click", () => {
     window.location.href = "./admin.product.php";

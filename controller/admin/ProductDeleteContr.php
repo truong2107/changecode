@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ProductClass.php"; 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/web/class/admin/ProductDeleteClass.php"; 
 
-class ProductDeleteContr extends ProductClass{
+class ProductDeleteContr extends ProductDeleteClass{
 
     public function getSoLuongBanTheoId($id){
         return $this->getSoLuongBanDB($id);
